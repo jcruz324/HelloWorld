@@ -9,6 +9,14 @@ namespace HelloWorld
     public class SqlConnector : IDataConnection
     {
         public string Line { get; set; }
-        public string ShowLine { get; set; }
+
+        public void ShowLine()
+        {
+            // ToDo Connect to database and query
+            // No Constructor
+            Line = "Hello World";
+        }
+
+
     }
 }

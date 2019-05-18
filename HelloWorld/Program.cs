@@ -10,19 +10,23 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            GlobalConfig.InitializeConnections(true, true);
+            // Add connection types statically
+            GlobalConfig.InitializeConnections(Connections.Model.ConnectionType.TextFile);
+            GlobalConfig.InitializeConnections(Connections.Model.ConnectionType.Console);
+            GlobalConfig.InitializeConnections(Connections.Model.ConnectionType.SQL);
 
+            // call instance
             ConsoleConnector hello = new ConsoleConnector();
-            Console.WriteLine(hello.Line);
+            hello.ShowLine();
 
+            SqlConnector sqlHello = new SqlConnector();
+            sqlHello.ShowLine();
 
-            foreach (IDataConnection db in GlobalConfig.Connections)
+            // call any api using interface
+            foreach (IDataConnection conn in GlobalConfig.Connections)
             {
-                db.Line = hello.Line;
+                conn.ShowLine();
             }
-
-
-            hello.TranslateHelloWorld();
 
         }
 

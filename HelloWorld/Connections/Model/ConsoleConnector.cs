@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace HelloWorld
 {
-    class ConsoleConnector : IDataConnection
+    public class ConsoleConnector : IDataConnection
     {
         //Properties
         public string Line { get; set; }
-        public string ShowLine { get; set; }
+
         public static Dictionary<string, string> DisplayByLanguages { get => displayByLanguages; set => displayByLanguages = value; }
         private static Dictionary<string, string> displayByLanguages;
 
@@ -23,7 +23,7 @@ namespace HelloWorld
         {
             Line = consoleString;
 
-
+            // Gold plating
             displayByLanguages = new Dictionary<string, string>()
             {
                 { "Italian", "Ciao mondo" },
@@ -33,7 +33,13 @@ namespace HelloWorld
 
 
         }
-
+        /// <summary>
+        /// Display the line using console
+        /// </summary>
+        public void ShowLine()
+        {
+            Console.WriteLine(this.Line);
+        }
 
         /// <summary>
         /// Translates Hello World to other languages
@@ -59,6 +65,7 @@ namespace HelloWorld
 
             Console.ReadLine();
         }
+
 
     }
 }

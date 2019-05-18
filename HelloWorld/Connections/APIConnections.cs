@@ -7,12 +7,28 @@ using System.Threading.Tasks;
 
 namespace HelloWorld.DataAccess
 {
-    class APIConnections
+   public class APIConnections
     {
-        public static string FullFilePath(string fileName)
+        public static string ConfigFolder(string fileName)
         {
-            //return $"{ ConfigurationManager.AppSettings}";
-            return $"{ ConfigurationManager.AppSettings }";
+            string overrideFolder = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            string returnText;
+            
+            //Override text location to accomdate user's machine
+            Configuration config =
+           ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            config.AppSettings.Settings.Remove("filePath");
+            config.AppSettings.Settings.Add("filePath", overrideFolder);
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            returnText = $"{ ConfigurationManager.AppSettings["filePath"] + "\\" }";
+
+            return returnText + fileName;
+
+
+            // TOdo House Database Connections 
         }
+
     }
 }
