@@ -10,8 +10,7 @@ namespace HelloWorld
     public static class GlobalConfig
     {
         public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
-
-        public static void InitializeConnections(ConnectionType conn ) //todo convert these to list ofs
+        public static void InitializeConnections(ConnectionType conn )
         {
             switch (conn)
             {
@@ -34,10 +33,13 @@ namespace HelloWorld
                     }
                     break;
                 case ConnectionType.Web:
+                    // Todo add logic here
                     break;
                 case ConnectionType.Mobile:
+                    // Todo add logic here
                     break;
                 default:
+                    // Todo add logic here
                     break;
             }
         }

@@ -8,13 +8,9 @@ namespace HelloWorld
 {
     public class ConsoleConnector : IDataConnection
     {
-        //Properties
         public string Line { get; set; }
-
         public static Dictionary<string, string> DisplayByLanguages { get => displayByLanguages; set => displayByLanguages = value; }
         private static Dictionary<string, string> displayByLanguages;
-
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -22,15 +18,12 @@ namespace HelloWorld
         public ConsoleConnector(string consoleString = "Hello World")
         {
             Line = consoleString;
-
-            // Gold plating
             displayByLanguages = new Dictionary<string, string>()
             {
                 { "Italian", "Ciao mondo" },
                 { "Spanish", "Hola Mundo" },
                 { "English", "Hello World" }
             };
-
 
         }
         /// <summary>
@@ -40,9 +33,8 @@ namespace HelloWorld
         {
             Console.WriteLine(this.Line);
         }
-
         /// <summary>
-        /// Translates Hello World to other languages
+        /// Translates Hello World to other languages // Gold plating
         /// </summary>
         public void TranslateHelloWorld()
         {
@@ -61,7 +53,7 @@ namespace HelloWorld
                 Console.WriteLine("That's not in there, stopping the program");
                 return; // Todo, give user the option to add it to the dictionary (or database)
             }
-            Console.WriteLine(translatedPhrase);
+            Console.WriteLine($"Translated to: {translatedPhrase}");
 
             Console.ReadLine();
         }

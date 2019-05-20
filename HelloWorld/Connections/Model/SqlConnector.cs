@@ -12,7 +12,7 @@ namespace HelloWorld
 
         public void ShowLine()
         {
-            // ToDo Connect to database and query
+            // Todo Connect to database and query
             // No Constructor
             Line = "Hello World";
         }

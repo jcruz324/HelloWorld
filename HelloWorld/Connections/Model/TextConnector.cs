@@ -13,25 +13,22 @@ namespace HelloWorld
     public class TextConnector : APIConnections, IDataConnection
     {
         public string Line { get; set; }
-
-        private string LocalFilePath { get; set; }
-
         private readonly string fileName = "HelloWorld.txt";
         public string FullFilePath { get; set; }
 
-        public TextConnector(string line = "Hello World")
+        /// <summary>
+        /// Constructor: For text files, use the app.config to find a spot to save the files 
+        /// </summary>
+        /// <param name="line">Hello World Line</param>
+        public TextConnector(string line = "Hello World") 
         {
             Line = line;
             this.FullFilePath = APIConnections.ConfigFolder(this.fileName);
             
         }
-
-        private string GetFileName()
-        {
-            return fileName;
-        }
-
-
+        /// <summary>
+        /// Print Hello World to a text file
+        /// </summary>
         public void ShowLine()
         {
        
@@ -43,8 +40,5 @@ namespace HelloWorld
             Process.Start(this.FullFilePath);
 
         }
-
-
-
     }
 }

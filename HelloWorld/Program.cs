@@ -19,17 +19,16 @@ namespace HelloWorld
             ConsoleConnector hello = new ConsoleConnector();
             hello.ShowLine();
 
-            SqlConnector sqlHello = new SqlConnector();
-            sqlHello.ShowLine();
-
             // call any api using interface
             foreach (IDataConnection conn in GlobalConfig.Connections)
             {
                 conn.ShowLine();
             }
 
+            // call translator
+            hello.TranslateHelloWorld();
+            
         }
-
         
     }
 }
